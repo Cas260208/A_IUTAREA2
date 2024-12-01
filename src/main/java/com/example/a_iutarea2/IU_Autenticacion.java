@@ -44,7 +44,7 @@ public class IU_Autenticacion extends Application {
 
         // Título
         Text texto = new Text("Inicio de sesión");
-        texto.setFont(Font.font("Arial", 36)); // Texto más grande para HD
+        texto.setFont(Font.font("Italic", 36)); // Texto más grande para HD
         texto.setFill(Color.BLACK);
 
         // Campos de texto
@@ -54,7 +54,8 @@ public class IU_Autenticacion extends Application {
         textoC.setFill(Color.BLACK);
         correo.setPromptText("Correo electrónico");
         correo.setStyle("-fx-background-radius: 10; -fx-background-color: #000; -fx-text-fill: white;");
-        correo.setPrefWidth(400); // Ajuste ancho para HD
+        correo.setPrefWidth(400); // Ajuste ancho para H
+        correo.setPrefHeight(40); // Ajustar el alto
 
         PasswordField passw = new PasswordField();
         Text textoPas = new Text("Contraseña:");
@@ -62,16 +63,18 @@ public class IU_Autenticacion extends Application {
         textoPas.setFill(Color.BLACK);
         passw.setPromptText("Contraseña");
         passw.setStyle("-fx-background-radius: 10; -fx-background-color: #000; -fx-text-fill: white;");
-        passw.setPrefWidth(400);
+        passw.setPrefWidth(400); // Ajuste ancho para H
+        passw.setPrefHeight(40); // Ajustar el alto
 
         // Botones
         Button iniciarSesion = new Button("Entrar");
         iniciarSesion.setStyle("-fx-background-radius: 20; -fx-background-color: black; -fx-text-fill: white;");
-        iniciarSesion.setPrefWidth(200);
+        iniciarSesion.setPrefWidth(100);
 
         Button registro = new Button("Registrarse");
         registro.setStyle("-fx-background-radius: 20; -fx-background-color: black; -fx-text-fill: white;");
-        registro.setPrefWidth(200);
+        registro.setPrefHeight(10);
+        registro.setPrefWidth(100);
 
         // Línea divisoria
         Line line = new Line(0, 0, 400, 0);
