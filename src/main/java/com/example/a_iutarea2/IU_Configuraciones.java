@@ -54,8 +54,8 @@ public class IU_Configuraciones extends Application {
         String imagePhotoUser = getClass().getResource("/imagenes/foto.jpg").toExternalForm();
         Image imgPhUs = new Image(imagePhotoUser);
         ImageView imgViewPhoto = new ImageView(imgPhUs);
-        imgViewPhoto.setFitWidth(40);
-        imgViewPhoto.setFitHeight(40);
+        imgViewPhoto.setFitWidth(30);
+        imgViewPhoto.setFitHeight(30);
         Button btnPhoto = new Button("Cambiar foto de perfil");
         btnPhoto.setGraphic(imgViewPhoto);
         btnPhoto.setStyle("-fx-background-color: transparent; -fx-font-family: Arial; -fx-font-size: 20;");
@@ -106,11 +106,11 @@ public class IU_Configuraciones extends Application {
         String imageExit = getClass().getResource("/imagenes/salida.jpg").toExternalForm();
         Image imgExit = new Image(imageExit);
         ImageView imgViewExit = new ImageView(imgExit);
-        imgViewExit.setFitWidth(30);
-        imgViewExit.setFitHeight(30);
+        imgViewExit.setFitWidth(50);
+        imgViewExit.setFitHeight(50);
         Button btnExit = new Button();
         btnExit.setGraphic(imgViewExit);
-        btnExit.setStyle("-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 10; -fx-padding: 30;");
+        btnExit.setStyle("-fx-background-color: transparent;");
         btnExit.setOnAction(e -> {
             System.out.println("¡Botón de salida clicado!");
         });
@@ -119,11 +119,11 @@ public class IU_Configuraciones extends Application {
         String imageSettings = getClass().getResource("/imagenes/configuracion.jpg").toExternalForm();
         Image imgSettings = new Image(imageSettings);
         ImageView imgViewSettings = new ImageView(imgSettings);
-        imgViewSettings.setFitWidth(30);
-        imgViewSettings.setFitHeight(30);
+        imgViewSettings.setFitWidth(50);
+        imgViewSettings.setFitHeight(50);
         Button btnSettings = new Button();
         btnSettings.setGraphic(imgViewSettings);
-        btnSettings.setStyle("-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 10; -fx-padding: 30;");
+        btnSettings.setStyle("-fx-background-color: transparent;");
         btnSettings.setOnAction(e -> {
             System.out.println("¡Botón de configuración clicado!");
         });
@@ -131,31 +131,44 @@ public class IU_Configuraciones extends Application {
         // Cuadro de texto
         TextField bus = new TextField();
         bus.setPromptText("Ingresa palabra clave");
-        bus.setStyle("-fx-background-color: white;");
+        bus.setStyle("-fx-background-color: white; -fx-border-color: transparent; -fx-padding: 0;");
         bus.setPrefWidth(500);
 
         // Botón búsqueda
         String imageSearch = getClass().getResource("/imagenes/busqueda.jpg").toExternalForm();
         Image imgSear = new Image(imageSearch);
         ImageView imgViewSear = new ImageView(imgSear);
-        imgViewSear.setFitWidth(30);
-        imgViewSear.setFitHeight(30);
+        imgViewSear.setFitWidth(50);
+        imgViewSear.setFitHeight(50);
         Button btnSear = new Button();
         btnSear.setGraphic(imgViewSear);
-        btnSear.setStyle("-fx-background-color: transparent;");
+        btnSear.setStyle("-fx-background-color: transparent; -fx-padding: 0;"); // Sin relleno interno
         btnSear.setOnAction(e -> {
             System.out.println("¡Botón de búsqueda clicado!");
+        });
+
+        // Botón inicio
+        String imageHome = getClass().getResource("/imagenes/inicio.jpg").toExternalForm();
+        Image imgHome = new Image(imageHome);
+        ImageView imgViewHome = new ImageView(imgHome);
+        imgViewHome.setFitWidth(50);
+        imgViewHome.setFitHeight(50);
+        Button btnHome = new Button();
+        btnHome.setGraphic(imgViewHome);
+        btnHome.setStyle("-fx-background-color: transparent;");
+        btnHome.setOnAction(e -> {
+            System.out.println("¡Botón de regresar feed!");
         });
 
         // Boton perfil
         String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
         Image imgPerfil = new Image(imagePerfil);
         ImageView imgViewPerfil = new ImageView(imgPerfil);
-        imgViewPerfil.setFitWidth(30);
-        imgViewPerfil.setFitHeight(30);
+        imgViewPerfil.setFitWidth(50);
+        imgViewPerfil.setFitHeight(50);
         Button btnPerfil = new Button();
         btnPerfil.setGraphic(imgViewPerfil);
-        btnPerfil.setStyle("-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 10; -fx-padding: 30;");
+        btnPerfil.setStyle("-fx-background-color: transparent;");
         btnPerfil.setOnAction(e -> {
             System.out.println("¡Botón de perfil!");
         });
@@ -172,14 +185,16 @@ public class IU_Configuraciones extends Application {
         conf.setFont(Font.font("Arial", 40));
         conf.setFill(Color.BLACK);
 
-        // Contenedor busqueda
-        HBox busq = new HBox(10, bus, btnSear);
+        // Contenedor barra de búsqueda
+        HBox busq = new HBox(2, bus, btnSear);
         busq.setAlignment(Pos.CENTER);
-        busq.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-padding: 10;");
+        busq.setStyle("-fx-background-color: white; -fx-border-color: black;-fx-max-height: 10; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 5;");
+        busq.setPrefHeight(10);
 
         // Contenedor barra de arriba
-        HBox barra = new HBox(10, btnPerfil, busq, btnSettings, btnExit, imgViewLogo);
+        HBox barra = new HBox(30, btnPerfil, btnHome,  busq, btnSettings, btnExit, imgViewLogo);
         barra.setPadding(new Insets(10));
+        barra.setAlignment(Pos.CENTER);
         barra.setStyle("-fx-background-color: white;");
 
         // Contenedor opciones de configuración
