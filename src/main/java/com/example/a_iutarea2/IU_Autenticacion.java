@@ -25,7 +25,7 @@ public class IU_Autenticacion extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // Ruta del logo
-        String imagePath = "C:\\Users\\Admin\\IdeaProjects\\A_IUTAREA2\\src\\main\\java\\com\\example\\a_iutarea2\\pruebaL.jpg";
+        String imagePath = getClass().getResource("/imagenes/pruebaL.jpg").toExternalForm();
         Image img = new Image(imagePath);
 
         // Logo con tamaño ajustado
