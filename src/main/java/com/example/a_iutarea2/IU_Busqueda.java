@@ -92,6 +92,8 @@ public class IU_Busqueda extends Application {
             System.out.println("¡Botón de perfil!");
         });
 
+
+
         // Logo
         String imageLogo = getClass().getResource("/imagenes/pruebaL.jpg").toExternalForm();
         Image imgLogo = new Image(imageLogo);
@@ -135,12 +137,26 @@ public class IU_Busqueda extends Application {
         // ComboBox "Siguiendo"
         ComboBox<String> comboSiguiendo = new ComboBox<>();
         comboSiguiendo.getItems().addAll(
+                "Siguiendo", // Incluye la opción predeterminada explícitamente
                 "Dejar de seguir",
                 "Bloquear"
         );
-        comboSiguiendo.setValue("Siguiendo");
+        comboSiguiendo.setValue("Siguiendo"); // Establece el valor inicial
+
         comboSiguiendo.setStyle("-fx-background-radius: 10; -fx-background-color: black; -fx-text-fill: white; -fx-font-size: 16;");
         comboSiguiendo.setPrefWidth(200);
+
+        // Listener para restaurar "Siguiendo" como predeterminado
+        comboSiguiendo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                comboSiguiendo.setValue("Siguiendo");
+            } else if (!newValue.equals("Siguiendo")) {
+                // Imprime un mensaje al cambiar la selección
+                System.out.println("Seleccionaste: " + newValue);
+            }
+        });
+
+        // Configura el estilo de las celdas
         comboSiguiendo.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -169,7 +185,6 @@ public class IU_Busqueda extends Application {
             };
             return cell;
         });
-
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
