@@ -22,42 +22,18 @@ public class IU_Busqueda extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Botón perfil
-        String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
-        Image imgPerfil = new Image(imagePerfil);
-        ImageView imgViewPerfil = new ImageView(imgPerfil);
-        imgViewPerfil.setFitWidth(50);
-        imgViewPerfil.setFitHeight(50);
-        Button btnPerfil = new Button();
-        btnPerfil.setGraphic(imgViewPerfil);
-        btnPerfil.setStyle("-fx-background-color: transparent;");
-        btnPerfil.setOnAction(e -> {
-            System.out.println("¡Botón de perfil clicado!");
+        // Botón salida
+        String imageExit = getClass().getResource("/imagenes/salida.jpg").toExternalForm();
+        Image imgExit = new Image(imageExit);
+        ImageView imgViewExit = new ImageView(imgExit);
+        imgViewExit.setFitWidth(50);
+        imgViewExit.setFitHeight(50);
+        Button btnExit = new Button();
+        btnExit.setGraphic(imgViewExit);
+        btnExit.setStyle("-fx-background-color: transparent;");
+        btnExit.setOnAction(e -> {
+            System.out.println("¡Botón de salida clicado!");
         });
-
-        // Cuadro de texto para búsqueda
-        TextField bus = new TextField();
-        bus.setPromptText("Ingresa palabra clave");
-        bus.setStyle("-fx-background-color: white; -fx-border-color: transparent;");
-        bus.setPrefWidth(500);
-
-        // Botón de búsqueda
-        String imageSearch = getClass().getResource("/imagenes/busqueda.jpg").toExternalForm();
-        Image imgSear = new Image(imageSearch);
-        ImageView imgViewSear = new ImageView(imgSear);
-        imgViewSear.setFitWidth(50);
-        imgViewSear.setFitHeight(50);
-        Button btnSear = new Button();
-        btnSear.setGraphic(imgViewSear);
-        btnSear.setStyle("-fx-background-color: transparent;");
-        btnSear.setOnAction(e -> {
-            System.out.println("¡Botón de búsqueda clicado!");
-        });
-
-        // Contenedor para barra de búsqueda
-        HBox busq = new HBox(2, bus, btnSear);
-        busq.setAlignment(Pos.CENTER);
-        busq.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 5;");
 
         // Botón configuraciones
         String imageSettings = getClass().getResource("/imagenes/configuracion.jpg").toExternalForm();
@@ -72,17 +48,49 @@ public class IU_Busqueda extends Application {
             System.out.println("¡Botón de configuración clicado!");
         });
 
-        // Botón salida
-        String imageExit = getClass().getResource("/imagenes/salida.jpg").toExternalForm();
-        Image imgExit = new Image(imageExit);
-        ImageView imgViewExit = new ImageView(imgExit);
-        imgViewExit.setFitWidth(50);
-        imgViewExit.setFitHeight(50);
-        Button btnExit = new Button();
-        btnExit.setGraphic(imgViewExit);
-        btnExit.setStyle("-fx-background-color: transparent;");
-        btnExit.setOnAction(e -> {
-            System.out.println("¡Botón de salida clicado!");
+        // Cuadro de texto
+        TextField bus = new TextField();
+        bus.setPromptText("Ingresa palabra clave");
+        bus.setStyle("-fx-background-color: white; -fx-border-color: transparent; -fx-padding: 0;");
+        bus.setPrefWidth(500);
+
+        // Botón búsqueda
+        String imageSearch = getClass().getResource("/imagenes/busqueda.jpg").toExternalForm();
+        Image imgSear = new Image(imageSearch);
+        ImageView imgViewSear = new ImageView(imgSear);
+        imgViewSear.setFitWidth(50);
+        imgViewSear.setFitHeight(50);
+        Button btnSear = new Button();
+        btnSear.setGraphic(imgViewSear);
+        btnSear.setStyle("-fx-background-color: transparent; -fx-padding: 0;"); // Sin relleno interno
+        btnSear.setOnAction(e -> {
+            System.out.println("¡Botón de búsqueda clicado!");
+        });
+
+        // Botón inicio
+        String imageHome = getClass().getResource("/imagenes/inicio.jpg").toExternalForm();
+        Image imgHome = new Image(imageHome);
+        ImageView imgViewHome = new ImageView(imgHome);
+        imgViewHome.setFitWidth(50);
+        imgViewHome.setFitHeight(50);
+        Button btnHome = new Button();
+        btnHome.setGraphic(imgViewHome);
+        btnHome.setStyle("-fx-background-color: transparent;");
+        btnHome.setOnAction(e -> {
+            System.out.println("¡Botón de regresar feed!");
+        });
+
+        // Boton perfil
+        String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
+        Image imgPerfil = new Image(imagePerfil);
+        ImageView imgViewPerfil = new ImageView(imgPerfil);
+        imgViewPerfil.setFitWidth(50);
+        imgViewPerfil.setFitHeight(50);
+        Button btnPerfil = new Button();
+        btnPerfil.setGraphic(imgViewPerfil);
+        btnPerfil.setStyle("-fx-background-color: transparent;");
+        btnPerfil.setOnAction(e -> {
+            System.out.println("¡Botón de perfil!");
         });
 
         // Logo
@@ -92,8 +100,14 @@ public class IU_Busqueda extends Application {
         imgViewLogo.setFitWidth(80);
         imgViewLogo.setFitHeight(80);
 
+        // Contenedor barra de búsqueda
+        HBox busq = new HBox(2, bus, btnSear);
+        busq.setAlignment(Pos.CENTER);
+        busq.setStyle("-fx-background-color: white; -fx-border-color: black;-fx-max-height: 10; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 5;");
+        busq.setPrefHeight(10);
+
         // Contenedor barra de arriba
-        HBox barra = new HBox(30, btnPerfil, busq, btnSettings, btnExit, imgViewLogo);
+        HBox barra = new HBox(30, btnPerfil, btnHome, busq, btnSettings, btnExit, imgViewLogo);
         barra.setPadding(new Insets(10));
         barra.setAlignment(Pos.CENTER);
         barra.setStyle("-fx-background-color: white;");
