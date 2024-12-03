@@ -132,7 +132,7 @@ public class IU_Configuraciones extends Application {
         TextField bus = new TextField();
         bus.setPromptText("Ingresa palabra clave");
         bus.setStyle("-fx-background-color: white;");
-        bus.setPrefWidth(300);
+        bus.setPrefWidth(500);
 
         // Botón búsqueda
         String imageSearch = getClass().getResource("/imagenes/busqueda.jpg").toExternalForm();
@@ -145,6 +145,19 @@ public class IU_Configuraciones extends Application {
         btnSear.setStyle("-fx-background-color: transparent;");
         btnSear.setOnAction(e -> {
             System.out.println("¡Botón de búsqueda clicado!");
+        });
+
+        // Boton perfil
+        String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
+        Image imgPerfil = new Image(imagePerfil);
+        ImageView imgViewPerfil = new ImageView(imgPerfil);
+        imgViewPerfil.setFitWidth(30);
+        imgViewPerfil.setFitHeight(30);
+        Button btnPerfil = new Button();
+        btnPerfil.setGraphic(imgViewPerfil);
+        btnPerfil.setStyle("-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 10; -fx-padding: 30;");
+        btnPerfil.setOnAction(e -> {
+            System.out.println("¡Botón de perfil!");
         });
 
         // Logo
@@ -165,7 +178,7 @@ public class IU_Configuraciones extends Application {
         busq.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-padding: 10;");
 
         // Contenedor barra de arriba
-        HBox barra = new HBox(10, busq, btnSettings, btnExit, imgViewLogo);
+        HBox barra = new HBox(10, btnPerfil, busq, btnSettings, btnExit, imgViewLogo);
         barra.setPadding(new Insets(10));
         barra.setStyle("-fx-background-color: white;");
 

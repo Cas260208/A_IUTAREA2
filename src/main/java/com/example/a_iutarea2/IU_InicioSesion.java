@@ -157,7 +157,7 @@ public class IU_InicioSesion extends Application {
             }
         });
 
-        // ComboBox para Año
+        // ComboBox para sexo
         ComboBox<String> sexo = new ComboBox<>();
         sexo.getItems().addAll(
                 "Femenino", "Masculino", "Neutro"
