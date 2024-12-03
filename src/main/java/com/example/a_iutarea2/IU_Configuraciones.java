@@ -110,7 +110,7 @@ public class IU_Configuraciones extends Application {
         imgViewExit.setFitHeight(30);
         Button btnExit = new Button();
         btnExit.setGraphic(imgViewExit);
-        btnExit.setStyle("-fx-background-color: transparent;");
+        btnExit.setStyle("-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 20; ");
         btnExit.setOnAction(e -> {
             System.out.println("Salida");
         });
@@ -123,7 +123,7 @@ public class IU_Configuraciones extends Application {
         imgViewSettings.setFitHeight(30);
         Button btnSettings = new Button();
         btnSettings.setGraphic(imgViewSettings);
-        btnSettings.setStyle("-fx-background-color: transparent;");
+        btnSettings.setStyle("-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 20; ");
         btnSettings.setOnAction(e -> {
             System.out.println("Configuracion");
         });
@@ -140,6 +140,10 @@ public class IU_Configuraciones extends Application {
         btnSear.setOnAction(e -> {
             System.out.println("Sear");
         });
+
+        // Espacio para ingresar palabra
+        TextField busqueda = new TextField();
+
 
         // Logo
         String imageLogo = "file:C:/Users/Admin/IdeaProjects/A_IUTAREA2/src/main/java/com/example/a_iutarea2/pruebaL.jpg";

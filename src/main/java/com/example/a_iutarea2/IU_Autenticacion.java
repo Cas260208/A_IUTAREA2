@@ -16,9 +16,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 public class IU_Autenticacion extends Application {
 
     public static void main(String[] args) {
@@ -28,7 +25,7 @@ public class IU_Autenticacion extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // Ruta del logo
-        String imagePath = "file:C:/Users/Admin/IdeaProjects/A_IUTAREA2/src/main/java/com/example/a_iutarea2/pruebaL.jpg";
+        String imagePath = "C:\\Users\\Admin\\IdeaProjects\\A_IUTAREA2\\src\\main\\java\\com\\example\\a_iutarea2\\pruebaL.jpg";
         Image img = new Image(imagePath);
 
         // Logo con tamaño ajustado
