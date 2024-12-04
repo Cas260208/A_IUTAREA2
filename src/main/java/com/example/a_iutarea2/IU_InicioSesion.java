@@ -31,17 +31,17 @@ public class IU_InicioSesion extends Application {
         // Logo con tamaño ajustado
         ImageView imgView = new ImageView(img);
         imgView.setPreserveRatio(true);
-        imgView.setFitWidth(600); // Ajustar ancho para que se vea proporcionado en HD
+        imgView.setFitWidth(600);
 
         // Contenedor para el logo
         VBox logo = new VBox(imgView);
         logo.setAlignment(Pos.CENTER);
         logo.setPadding(new Insets(0, 10, 0, 10));
-        logo.setStyle("-fx-background-color: #FFF;"); // Fondo claro para separar visualmente
+        logo.setStyle("-fx-background-color: #FFF;");
 
         // Título
         Text texto = new Text("Inicio de sesión");
-        texto.setFont(Font.font("Italic", 36)); // Texto más grande para HD
+        texto.setFont(Font.font("Italic", 36));
         texto.setFill(Color.BLACK);
 
         // Campos de texto
@@ -51,8 +51,8 @@ public class IU_InicioSesion extends Application {
         textoC.setFill(Color.BLACK);
         correo.setPromptText("Correo electrónico");
         correo.setStyle("-fx-background-radius: 10; -fx-background-color: #000; -fx-text-fill: white;");
-        correo.setPrefWidth(400); // Ajuste ancho para H
-        correo.setPrefHeight(40); // Ajustar el alto
+        correo.setPrefWidth(400);
+        correo.setPrefHeight(40);
 
         PasswordField passw = new PasswordField();
         Text textoPas = new Text("Contraseña:");
@@ -60,8 +60,8 @@ public class IU_InicioSesion extends Application {
         textoPas.setFill(Color.BLACK);
         passw.setPromptText("Contraseña");
         passw.setStyle("-fx-background-radius: 10; -fx-background-color: #000; -fx-text-fill: white;");
-        passw.setPrefWidth(400); // Ajuste ancho para H
-        passw.setPrefHeight(40); // Ajustar el alto
+        passw.setPrefWidth(400);
+        passw.setPrefHeight(40);
 
         // Botones
         Button iniciarSesion = new Button("Entrar");
@@ -88,10 +88,10 @@ public class IU_InicioSesion extends Application {
         HBox principal = new HBox(20, logo, formulario);
         principal.setAlignment(Pos.CENTER);
         principal.setPadding(new Insets(20));
-        principal.setStyle("-fx-background-color: white;"); // Fondo blanco para el contenedor principal
+        principal.setStyle("-fx-background-color: white;");
 
         // Configuración de la escena en tamaño HD
-        Scene scene = new Scene(principal, 1280, 720); // Tamaño HD
+        Scene scene = new Scene(principal, 1280, 720);
         stage.setTitle("RSCUA");
         stage.setScene(scene);
 
