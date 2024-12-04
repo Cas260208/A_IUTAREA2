@@ -7,8 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -93,6 +92,8 @@ public class IU_Busqueda extends Application {
             System.out.println("¡Botón de perfil!");
         });
 
+
+
         // Logo
         String imageLogo = getClass().getResource("/imagenes/pruebaL.jpg").toExternalForm();
         Image imgLogo = new Image(imageLogo);
@@ -133,44 +134,85 @@ public class IU_Busqueda extends Application {
 
         VBox perfilInformacion = new VBox(5, lblNombrePerfil, lblUsuarioPerfil);
 
-
         // ComboBox "Siguiendo"
         ComboBox<String> comboSiguiendo = new ComboBox<>();
         comboSiguiendo.getItems().addAll(
+                "Siguiendo", // Incluye la opción predeterminada explícitamente
                 "Dejar de seguir",
                 "Bloquear"
         );
-        comboSiguiendo.setValue("Siguiendo");
+        comboSiguiendo.setValue("Siguiendo"); // Establece el valor inicial
+
         comboSiguiendo.setStyle("-fx-background-radius: 10; -fx-background-color: black; -fx-text-fill: white; -fx-font-size: 16;");
         comboSiguiendo.setPrefWidth(200);
+
+        // Listener para restaurar "Siguiendo" como predeterminado
+        comboSiguiendo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                comboSiguiendo.setValue("Siguiendo");
+            } else if (!newValue.equals("Siguiendo")) {
+                // Imprime un mensaje al cambiar la selección
+                System.out.println("Seleccionaste: " + newValue);
+            }
+        });
+
+        // Configura el estilo de las celdas
+        comboSiguiendo.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                }
+                setStyle("-fx-background-radius: 10; -fx-background-color: black; -fx-text-fill: white; -fx-font-size: 16;");
+            }
+        });
 
         comboSiguiendo.setCellFactory(lv -> {
             ListCell<String> cell = new ListCell<>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
-                    setText(item);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item);
+                    }
                     setStyle(empty ? "" : "-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 16;");
                 }
             };
             return cell;
         });
 
-        comboSiguiendo.setButtonCell(new ListCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(item);
-                setStyle("-fx-background-radius: 10; -fx-background-color: black; -fx-text-fill: white; -fx-font-size: 16;");
-            }
-        });
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        HBox perfilBusqueda = new HBox(10, imgViewPerfilBusqueda, perfilInformacion, comboSiguiendo);
+        HBox perfilBusqueda = new HBox(10, imgViewPerfilBusqueda, perfilInformacion, spacer, comboSiguiendo);
         perfilBusqueda.setAlignment(Pos.CENTER_LEFT);
         perfilBusqueda.setPadding(new Insets(10));
-        perfilBusqueda.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 10;");
+        perfilBusqueda.setStyle("-fx-padding: 10;"); // Sin bordes
 
-        // Publicación asociada
+        // Barra de perfil en la publicación
+        ImageView imgPerfilPublicacion = new ImageView(imgPerfilBusqueda);
+        imgPerfilPublicacion.setFitWidth(40);
+        imgPerfilPublicacion.setFitHeight(40);
+
+        Label lblNombrePublicacion = new Label("Casandra Zetina");
+        lblNombrePublicacion.setFont(Font.font("Arial", 18));
+
+        Label lblUsuarioPublicacion = new Label("@CasZer29");
+        lblUsuarioPublicacion.setFont(Font.font("Arial", 14));
+        lblUsuarioPublicacion.setTextFill(Color.GRAY);
+
+        VBox detallesPublicacion = new VBox(5, lblNombrePublicacion, lblUsuarioPublicacion);
+
+        HBox barraPerfilPublicacion = new HBox(10, imgPerfilPublicacion, detallesPublicacion);
+        barraPerfilPublicacion.setAlignment(Pos.CENTER_LEFT);
+        barraPerfilPublicacion.setPadding(new Insets(10));
+
+        // Contenedor de publicación con barra negra
         Label lblDescripcionPost = new Label("Un día fantástico.");
         lblDescripcionPost.setFont(Font.font("Arial", 18));
 
@@ -189,20 +231,20 @@ public class IU_Busqueda extends Application {
         HBox publicaciones = new HBox(10, imgViewPost1, imgViewPost2);
         publicaciones.setAlignment(Pos.CENTER);
 
-        VBox contenidoBusqueda = new VBox(20, lblDescripcionPost, publicaciones);
-        contenidoBusqueda.setAlignment(Pos.CENTER_LEFT);
+        VBox contenedorPublicacion = new VBox(10, barraPerfilPublicacion, lblDescripcionPost, publicaciones);
+        contenedorPublicacion.setAlignment(Pos.TOP_LEFT);
+        contenedorPublicacion.setPadding(new Insets(10));
+        contenedorPublicacion.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 10;");
 
-        VBox resultadosBusqueda = new VBox(20, busquedaTitulo, perfilBusqueda, contenidoBusqueda);
+        VBox resultadosBusqueda = new VBox(20, busquedaTitulo, perfilBusqueda, contenedorPublicacion);
         resultadosBusqueda.setAlignment(Pos.TOP_LEFT);
         resultadosBusqueda.setPadding(new Insets(20));
-        resultadosBusqueda.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 20;");
+        resultadosBusqueda.setStyle("-fx-background-color: white;");
 
-        // Contenedor principal
         VBox principal = new VBox(20, barra, resultadosBusqueda);
         principal.setPadding(new Insets(20));
         principal.setStyle("-fx-background-color: white;");
 
-        // Configuración de la escena
         Scene scene = new Scene(principal, 1280, 720);
         stage.setTitle("RSCUA - Búsqueda");
         stage.setScene(scene);
