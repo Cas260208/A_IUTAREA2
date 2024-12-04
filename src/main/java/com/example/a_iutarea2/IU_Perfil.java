@@ -14,6 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.shape.Circle;
 
 public class IU_Perfil extends Application {
 
@@ -82,7 +85,7 @@ public class IU_Perfil extends Application {
         });
 
         // Boton perfil
-        String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
+        String imagePerfil = getClass().getResource("/imagenes/7772.jpg").toExternalForm();
         Image imgPerfil = new Image(imagePerfil);
         ImageView imgViewPerfil = new ImageView(imgPerfil);
         imgViewPerfil.setFitWidth(50);
@@ -92,6 +95,58 @@ public class IU_Perfil extends Application {
         btnPerfil.setStyle("-fx-background-color: transparent;");
         btnPerfil.setOnAction(e -> {
             System.out.println("¡Botón de perfil!");
+        });
+
+        // Botón escolaridad
+        String imageSchool = getClass().getResource("/imagenes/escuela.jpg").toExternalForm();
+        Image imgSchool = new Image(imageSchool);
+        ImageView imgViewSchool = new ImageView(imgSchool);
+        imgViewSchool.setFitWidth(30);
+        imgViewSchool.setFitHeight(30);
+        Button btnSchool = new Button("Estudia en 'UAM Cuajimalpa'.");
+        btnSchool.setGraphic(imgViewSchool);
+        btnSchool.setStyle("-fx-background-color: transparent;");
+        btnSchool.setOnAction(e -> {
+            System.out.println("¡Botón de escolaridad!");
+        });
+
+        // Botón relacion
+        String imageRelationship = getClass().getResource("/imagenes/relacion.jpg").toExternalForm();
+        Image imgRelationship = new Image(imageRelationship);
+        ImageView imgViewRelationship = new ImageView(imgRelationship);
+        imgViewRelationship.setFitWidth(30);
+        imgViewRelationship.setFitHeight(30);
+        Button btnRelationship = new Button("en una relación con 'CasZrd'.");
+        btnRelationship.setGraphic(imgViewRelationship);
+        btnRelationship.setStyle("-fx-background-color: transparent;");
+        btnRelationship.setOnAction(e -> {
+            System.out.println("¡Botón de situacion amorosa!");
+        });
+
+        // Botón ubicación
+        String imageLocation = getClass().getResource("/imagenes/ubicacion.jpg").toExternalForm();
+        Image imgLocation = new Image(imageLocation);
+        ImageView imgViewLocation = new ImageView(imgLocation);
+        imgViewLocation.setFitWidth(30);
+        imgViewLocation.setFitHeight(30);
+        Button btnLocation = new Button("en CDMX.");
+        btnLocation.setGraphic(imgViewLocation);
+        btnLocation.setStyle("-fx-background-color: transparent;");
+        btnLocation.setOnAction(e -> {
+            System.out.println("¡Botón de locación!");
+        });
+
+        // Botón musica
+        String imageMusic = getClass().getResource("/imagenes/musica.jpg").toExternalForm();
+        Image imgMusic = new Image(imageMusic);
+        ImageView imgViewMusic = new ImageView(imgMusic);
+        imgViewMusic.setFitWidth(30);
+        imgViewMusic.setFitHeight(30);
+        Button btnMusic = new Button("Escuchando a: 'Confieso - Kany García'.");
+        btnMusic.setGraphic(imgViewMusic);
+        btnMusic.setStyle("-fx-background-color: transparent;");
+        btnMusic.setOnAction(e -> {
+            System.out.println("¡Botón de música!");
         });
 
         // Logo
@@ -108,15 +163,60 @@ public class IU_Perfil extends Application {
         busq.setStyle("-fx-background-color: white; -fx-border-color: black;-fx-max-height: 10; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 5;");
         busq.setPrefHeight(10);
 
+        // Imagen de perfil (redonda)
+        String imagePerV = getClass().getResource("/imagenes/777.jpg").toExternalForm();
+        Image imgPer = new Image(imagePerV);
+        ImageView imageViewPer = new ImageView(imgPer);
+        imageViewPer.setFitWidth(120);
+        imageViewPer.setFitHeight(120);
+        imageViewPer.setStyle("-fx-background-color: black;");
+
+        // Nombre y username
+        Label name = new Label("Ivan Garrido Velazquez");
+        name.setFont(Font.font("Arial", 24));
+        name.setTextFill(Color.WHITE);
+
+        Label username = new Label("@Zaganav29");
+        username.setFont(Font.font("Arial", 16));
+        username.setTextFill(Color.WHITE);
+
+        // Estadísticas de seguidores
+        Label seguidos = new Label("Seguidos: 777");
+        seguidos.setFont(Font.font("Arial", 16));
+        seguidos.setTextFill(Color.BLACK);
+
+        Label seguidores = new Label("Seguidores: 1111");
+        seguidores.setFont(Font.font("Arial", 16));
+        seguidores.setTextFill(Color.BLACK);
+
+        // Contenedor Informacion
+        VBox informacion = new VBox(1, btnSchool, btnRelationship, btnLocation, btnMusic, seguidos, seguidores);
+        informacion.setAlignment(Pos.CENTER);
+        informacion.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-padding: 5;");
+
+        // Contenedor foto perfil
+        VBox header = new VBox(20, imageViewPer, name, username);
+        header.setPadding(new Insets(20));
+        header.setAlignment(Pos.CENTER);
+        header.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(10), Insets.EMPTY)));
+
+        // Contenido del perfil
+        Label postLabel = new Label("@Zaganav29");
+        postLabel.setFont(Font.font("Arial", 18));
+        postLabel.setTextFill(Color.BLACK);
+
+
         // Contenedor barra de arriba
-        HBox barra = new HBox(30, btnPerfil, btnHome,  busq, btnSettings, btnExit, imgViewLogo);
-        barra.setPadding(new Insets(10));
+        HBox barra = new HBox(0, btnPerfil, btnHome,  busq, btnSettings, btnExit, imgViewLogo);
         barra.setAlignment(Pos.CENTER);
         barra.setStyle("-fx-background-color: white;");
 
+        HBox contenedorPerfil = new HBox(informacion, postLabel);
+        contenedorPerfil.setStyle("-fx-background-color: white; -fx-padding: 5;");
+
+
         // Contenedor principal
-        VBox principal = new VBox(20, barra);
-        principal.setPadding(new Insets(20));
+        VBox principal = new VBox(5, barra, header, contenedorPerfil);
         principal.setStyle("-fx-background-color: white;");
 
         // Configuración de la escena

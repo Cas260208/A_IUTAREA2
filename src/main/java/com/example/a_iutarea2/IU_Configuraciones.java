@@ -161,7 +161,7 @@ public class IU_Configuraciones extends Application {
         });
 
         // Boton perfil
-        String imagePerfil = getClass().getResource("/imagenes/777.jpg").toExternalForm();
+        String imagePerfil = getClass().getResource("/imagenes/7772.jpg").toExternalForm();
         Image imgPerfil = new Image(imagePerfil);
         ImageView imgViewPerfil = new ImageView(imgPerfil);
         imgViewPerfil.setFitWidth(50);
